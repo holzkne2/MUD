@@ -23,9 +23,11 @@ def message_breakdown(user, message):
     if len(tokens) < 2:
         return
     if tokens[1].lower() in ["help"]:
-        say_message = """say text
-goto room
-attack"""
+        say_message = """say text\n\tSay something
+goto room\n\tGoto another room
+attack\n\tAttack enemy in room
+search\n\tSearch room
+"""
         user.client.sendall(say_message.encode('ascii'))
 
     elif tokens[1].lower() in ["say"]:
@@ -55,6 +57,10 @@ attack"""
             user.Attack()
             enemy.SetTarget(user)
             enemy.attack.Attack()
+
+    elif tokens[1].lower() in ["search"]:
+        user.room.Search(user)
+
     else:
         user.client.sendall("Unknown Command\n".encode('ascii'))
 

@@ -20,6 +20,9 @@ class User:
         if self.room != None:
             self.room.Leave(self)
 
+    def GetName(self):
+        return self.name
+
     def SetTarget(self, target):
         self.attack.SetTarget(target)
 

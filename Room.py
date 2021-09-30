@@ -30,6 +30,15 @@ class Room:
         else:
             return None
 
+    def Search(self, searcher):
+        out_message = "Users:\n"
+        for user in self.active_users:
+            out_message += "\t" + user.GetName() + "\n"
+        out_message += "Enemies:\n"
+        for enemy in self.enemies:
+            out_message += "\t" + enemy.GetName() + "\n"
+        searcher.client.sendall(out_message.encode('ascii'))
+
     def Chat(self, message):
         for user in self.active_users:
             user.client.sendall(message.encode('ascii'))

@@ -11,6 +11,9 @@ class Enemy:
         self.respawn = ElapsedTimer(0)
         self.room = None
 
+    def GetName(self):
+        return self.name
+
     def Die(self):
         self.respawn = ElapsedTimer(self.respawn_rate)
         self.attack.target = None
